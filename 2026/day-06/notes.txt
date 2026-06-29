@@ -1,0 +1,8 @@
+echo "Hello Linux" > notes.txt
+echo "My name is Shraddha." >> notes.txt
+echo "I am learning DevOps." | tee -a notes.txt
+echo "Today is Day 06." >> notes.txt
+echo "Linux is easy to learn." >> notes.txt
+echo "I am practicing file commands." >> notes.txt
+echo "Practice makes me better every day." >> notes.txt
+echo "I will become a DevOps Engineer." >> notes.txt

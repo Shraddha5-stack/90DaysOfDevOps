@@ -1,8 +1,8 @@
-# Linux File I/O Practice
+# Linux Fundamentals – Read and Write Text Files
 
 ## Objective
 
-The objective of today's practice was to understand the basic Linux file input and output operations using simple commands such as `touch`, `echo`, `tee`, `cat`, `head`, and `tail`.
+Today's goal was to practice basic file input and output operations in Linux. I learned how to create a file, write text, append new content, and read file contents using fundamental Linux commands.
 
 ---
 
@@ -23,38 +23,34 @@ touch notes.txt
 ### Command
 
 ```bash
-echo "Linux is the foundation of DevOps." > notes.txt
+echo "Hello Linux" > notes.txt
 ```
 
-**Purpose:** Writes the first line to the file. If the file already exists, its previous content is replaced.
+**Purpose:** Writes the first line into the file.
 
 ---
 
-## Step 3: Append Text
+## Step 3: Append More Text
 
-### Command
+### Commands
 
 ```bash
-echo "Learning Linux commands improves troubleshooting skills." >> notes.txt
+echo "My name is Shraddha." >> notes.txt
+echo "I am learning DevOps." | tee -a notes.txt
+echo "Today is Day 06." >> notes.txt
+echo "Linux is easy to learn." >> notes.txt
+echo "I am practicing file commands." >> notes.txt
+echo "Practice makes me better every day." >> notes.txt
+echo "I will become a DevOps Engineer." >> notes.txt
 ```
 
-**Purpose:** Appends a new line to the existing file without overwriting previous content.
+**Purpose:**
+- `>>` appends text to the existing file.
+- `tee -a` displays the text on the terminal and appends it to the file.
 
 ---
 
-## Step 4: Write and Display Using tee
-
-### Command
-
-```bash
-echo "Practice every day to build confidence." | tee -a notes.txt
-```
-
-**Purpose:** Displays the text on the terminal and appends it to the file simultaneously.
-
----
-
-## Step 5: Read the File
+## Step 4: Read the File
 
 ### Command
 
@@ -66,7 +62,7 @@ cat notes.txt
 
 ---
 
-## Step 6: Read the Beginning of the File
+## Step 5: Display the First Two Lines
 
 ### Command
 
@@ -74,11 +70,11 @@ cat notes.txt
 head -n 2 notes.txt
 ```
 
-**Purpose:** Displays the first two lines of the file.
+**Purpose:** Shows the first two lines of the file.
 
 ---
 
-## Step 7: Read the End of the File
+## Step 6: Display the Last Two Lines
 
 ### Command
 
@@ -86,21 +82,20 @@ head -n 2 notes.txt
 tail -n 2 notes.txt
 ```
 
-**Purpose:** Displays the last two lines of the file.
+**Purpose:** Shows the last two lines of the file.
 
 ---
 
 ## Key Learnings
 
-* Created a new file using `touch`.
-* Used `>` to write content to a file.
-* Used `>>` to append new content.
-* Learned how `tee` writes to a file while displaying output.
-* Used `cat`, `head`, and `tail` to read file contents efficiently.
+- Learned how to create a text file using `touch`.
+- Understood the difference between `>` and `>>`.
+- Used `tee -a` to write and display output at the same time.
+- Practiced reading files using `cat`, `head`, and `tail`.
+- Gained confidence in basic Linux file operations.
 
 ---
 
 ## Conclusion
 
-Understanding file input and output operations is an essential Linux skill for DevOps Engineers. Configuration files, log files, shell scripts, and automation tasks all depend on reading and writing text files efficiently.
-
+Basic file operations are an important part of Linux and DevOps. These commands are used daily for working with configuration files, log files, shell scripts, and automation tasks.
