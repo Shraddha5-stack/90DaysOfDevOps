@@ -1,0 +1,3 @@
+Linux file permissions are important.
+I am learning DevOps.
+Today is Day 10.
