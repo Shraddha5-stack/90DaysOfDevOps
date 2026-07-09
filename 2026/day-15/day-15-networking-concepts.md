@@ -296,6 +296,7 @@ Check MySQL logs.
 - Learned how DNS converts domain names into IP addresses.
 - Understood CIDR notation and subnetting basics.
 - Learned why ports are essential for network communication and how to inspect listening services.
+
 # Day 15 – Networking Concepts: DNS, IP, Subnets & Ports
 
 ## Task 1: DNS – How Names Become IPs
