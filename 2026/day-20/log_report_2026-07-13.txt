@@ -1,0 +1,17 @@
+================================
+Log Analysis Report
+================================
+
+Date of Analysis: 2026-07-13
+Log File: sample_log.log
+Total Lines Processed: 12
+Total Error Count: 6
+
+------ Top 5 Error Messages ------
+      3    Connection timed out
+      1    Permission denied
+      1    File not found
+
+------ Critical Events ------
+4:2026-07-13 09:10:30 CRITICAL Disk space below threshold
+9:2026-07-13 09:35:45 CRITICAL Database connection lost
