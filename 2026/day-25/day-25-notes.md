@@ -341,3 +341,32 @@ Kubernetes primarily follows a **GitHub Flow–style workflow** with pull reques
 - `git reset --hard` permanently deletes local changes.
 - `git reflog` can help recover commits after a reset.
 - Choosing the right branching strategy depends on the project's size, release process, and team workflow.
+
+
+
+
+---
+
+# Screenshots
+
+## 1. Git History
+
+This screenshot shows the commit history after performing Git Reset and Git Revert operations.
+
+![Git History](screenshots/01-git-history.png)
+
+---
+
+## 2. Git Status
+
+This screenshot shows the repository status after updating the Git commands and completing the tasks.
+
+![Git Status](screenshots/02-git-status.png)
+
+---
+
+## 3. GitHub Repository
+
+This screenshot shows the completed Day 25 folder uploaded to GitHub.
+
+![GitHub Repository](screenshots/03-github.png)
