@@ -94,3 +94,54 @@ Share your favorite `gh` commands or a screenshot of creating a PR from the term
 
 Happy Learning!
 **TrainWithShubham**
+
+## Screenshot
+
+### GitHub CLI Authentication
+
+![GitHub CLI Authentication](screenshots/01-gh-auth-status.png)
+
+
+### Repository Operations
+
+![Repository Management](screenshots/02-repository-management.png)
+
+
+### Repository List
+
+![Repository List](screenshots/03-repository-list.png)
+
+
+### Repository Delete
+
+![Repository Delete](screenshots/04-delete-repository.png)
+
+
+### Issue Create and List
+
+![Issue Create and List](screenshots/05-create-list-issues.png)
+
+
+### Issue Close
+
+![Issue Close](screenshots/06-close-issue.png)
+
+
+### Pull Requests
+
+![Pull Request Management](screenshots/07-pull-request-management.png)
+
+
+### GitHub Actions
+
+![GitHub Actions Workflows](screenshots/08-github-actions-workflows.png)
+
+
+### GitHub API
+
+![GitHub API User](screenshots/09-gh-api-user.png)
+
+
+### Search Repositories
+
+![Search GitHub Repositories](screenshots/10-search-github-repositories.png)
