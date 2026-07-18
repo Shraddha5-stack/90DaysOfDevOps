@@ -2,11 +2,11 @@
 
 ## Objective
 
-Learn how to use the GitHub CLI (`gh`) to manage GitHub repositories, issues, pull requests, and GitHub Actions directly from the terminal.
+Learn how to use GitHub CLI (`gh`) to manage GitHub repositories, issues, pull requests, GitHub Actions, and other GitHub operations directly from the terminal.
 
 ---
 
-# Task 1 – Install and Authenticate
+# Task 1 – Install and Authenticate GitHub CLI
 
 ## Commands Used
 
@@ -16,24 +16,26 @@ gh auth login
 gh auth status
 ```
 
-### Screenshot
+## Screenshot
 
 ![GitHub CLI Authentication](screenshots/01-gh-auth-status.png)
 
 ## Observations
 
 - Successfully installed GitHub CLI.
-- Authenticated using the browser.
+- Authenticated GitHub account using browser authentication.
 - Verified the active GitHub account.
 
-### Question
+## Question
 
-**What authentication methods does gh support?**
+### What authentication methods does `gh` support?
 
-**Answer**
+## Answer
 
-- Web Browser Authentication
-- Personal Access Token (PAT)
+GitHub CLI supports:
+
+1. Web Browser Authentication
+2. Personal Access Token (PAT)
 
 ---
 
@@ -50,30 +52,32 @@ gh repo view --web
 gh repo delete
 ```
 
-### Screenshot
+## Screenshots
 
-![Repository Operations](screenshots/02-repo-create-clone.png)
+### Repository Operations
 
-### Screenshot
+![Repository Operations](screenshots/02-repository-management.png)
 
-![Repository List](screenshots/03-repo-list.png)
+### Repository List
 
-### Screenshot
+![Repository List](screenshots/03-repository-list.png)
 
-![Repository Delete](screenshots/04-repo-delete.png)
+### Repository Delete
+
+![Repository Delete](screenshots/04-delete-repository.png)
 
 ## Observations
 
-- Created a repository from the terminal.
-- Cloned a repository.
-- Viewed repository details.
-- Listed repositories.
-- Opened the repository in the browser.
-- Deleted the demo repository.
+- Created a repository using GitHub CLI.
+- Cloned repositories directly from the terminal.
+- Viewed repository information.
+- Listed GitHub repositories.
+- Opened repositories in the browser.
+- Deleted a demo repository.
 
 ---
 
-# Task 3 – Issues
+# Task 3 – Managing GitHub Issues
 
 ## Commands Used
 
@@ -84,30 +88,33 @@ gh issue view
 gh issue close
 ```
 
-### Screenshot
+## Screenshots
 
-![Issue Create and List](screenshots/05-issue-create-list.png)
+### Issue Create and List
 
-### Screenshot
+![Issue Create and List](screenshots/05-create-list-issues.png)
 
-![Issue Close](screenshots/06-issue-close.png)
+### Issue Close
+
+![Issue Close](screenshots/06-close-issue.png)
 
 ## Question
 
-**How could you use gh issue in automation?**
+### How could you use `gh issue` in automation?
 
-### Answer
+## Answer
 
-The `gh issue` command can automate issue management such as:
+The `gh issue` command can automate issue management tasks:
 
-- Creating issues
-- Listing issues
-- Adding comments
-- Closing resolved issues
+- Creating new issues automatically.
+- Listing existing issues.
+- Viewing issue details.
+- Adding comments.
+- Closing resolved issues.
 
 ---
 
-# Task 4 – Pull Requests
+# Task 4 – Pull Requests Management
 
 ## Commands Used
 
@@ -118,19 +125,26 @@ gh pr view
 gh pr merge
 ```
 
-### Screenshot
+## Screenshot
 
-![Pull Requests](screenshots/07-pull-request.png)
+![Pull Request Management](screenshots/07-pull-request-management.png)
 
 ## Questions
 
-### What merge methods does gh pr merge support?
+### What merge methods does `gh pr merge` support?
+
+## Answer
+
+`gh pr merge` supports:
 
 - Merge Commit
 - Squash Merge
 - Rebase Merge
 
+
 ### How would you review someone else's PR?
+
+Command:
 
 ```bash
 gh pr review <pr-number> --approve
@@ -138,7 +152,7 @@ gh pr review <pr-number> --approve
 
 ---
 
-# Task 5 – GitHub Actions & Workflows
+# Task 5 – GitHub Actions and Workflows
 
 ## Commands Used
 
@@ -148,51 +162,61 @@ gh run list
 gh run view
 ```
 
-### Screenshot
+## Screenshot
 
-![GitHub Actions](screenshots/08-workflows.png)
+![GitHub Actions Workflows](screenshots/08-github-actions-workflows.png)
 
-### Question
+## Question
 
-How could `gh run` and `gh workflow` be useful in CI/CD?
+### How could `gh run` and `gh workflow` be useful in CI/CD?
 
-### Answer
+## Answer
 
-They help:
+They help DevOps engineers to:
 
-- Monitor workflow executions
-- View logs
-- Track build status
-- Re-run failed workflows
-- Automate CI/CD operations
+- Monitor workflow executions.
+- Check build status.
+- View workflow logs.
+- Track failed pipelines.
+- Re-run failed workflows.
+- Manage CI/CD operations from the terminal.
 
 ---
 
 # Task 6 – Useful GitHub CLI Commands
 
-## gh api
+## GitHub API
+
+Command:
 
 ```bash
 gh api user
 ```
 
-### Screenshot
+## Screenshot
 
-![GitHub API](screenshots/09-gh-api.png)
+![GitHub API](screenshots/09-gh-api-user.png)
+
 
 ---
 
-## gh gist
+## GitHub Gist
+
+Commands:
 
 ```bash
 gh gist create demo.txt --public
+
 gh gist list
+
 gh gist view <gist-id>
 ```
 
 ---
 
-## gh release
+## GitHub Release
+
+Command:
 
 ```bash
 gh release list
@@ -200,38 +224,51 @@ gh release list
 
 ---
 
-## gh alias
+## GitHub Alias
+
+Create custom command:
 
 ```bash
 gh alias set myrepos "repo list"
+```
+
+Run:
+
+```bash
 gh myrepos
 ```
 
 ---
 
-## gh search repos
+## Search GitHub Repositories
+
+Command:
 
 ```bash
 gh search repos kubernetes --limit 5
 ```
 
-### Screenshot
+## Screenshot
 
-![Search Repositories](screenshots/10-search-repos.png)
+![Search GitHub Repositories](screenshots/10-search-github-repositories.png)
 
 ---
 
 # Key Learnings
 
-- Installed and authenticated GitHub CLI.
-- Managed repositories directly from the terminal.
-- Created and managed Issues.
-- Worked with Pull Requests.
-- Explored GitHub Actions.
-- Learned advanced GitHub CLI commands useful for DevOps automation.
+- Installed and configured GitHub CLI.
+- Authenticated GitHub from terminal.
+- Managed repositories using `gh repo`.
+- Created and managed issues.
+- Worked with pull requests.
+- Explored GitHub Actions workflows.
+- Used GitHub API commands.
+- Learned GitHub CLI commands useful for DevOps automation.
 
 ---
 
 # Conclusion
 
-GitHub CLI enables developers and DevOps engineers to manage repositories, issues, pull requests, and GitHub Actions directly from the terminal, making automation and daily workflows faster and more efficient.
+GitHub CLI (`gh`) provides a powerful way to manage GitHub resources directly from the terminal.
+
+It helps developers and DevOps engineers automate daily GitHub workflows including repository management, issue tracking, pull requests, and CI/CD operations without opening the GitHub web interface.
