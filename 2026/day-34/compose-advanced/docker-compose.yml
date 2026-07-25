@@ -1,0 +1,49 @@
+services:
+  web:
+    build: ../app
+    ports:
+      - "5000:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: on-failure
+    networks:
+      - app-network
+    labels:
+      project: "day34"
+      service: "web"
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U admin -d mydb"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+    labels:
+      project: "day34"
+      service: "database"
+
+  redis:
+    image: redis:7
+    restart: always
+    networks:
+      - app-network
+    labels:
+      project: "day34"
+      service: "cache"
+
+networks:
+  app-network:
+
+volumes:
+  postgres-data:
