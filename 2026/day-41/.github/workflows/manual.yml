@@ -1,0 +1,30 @@
+name: Manual Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Choose environment
+        required: true
+        default: staging
+        type: choice
+        options:
+          - staging
+          - production
+
+jobs:
+  manual-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Print Environment
+        run: echo "Environment: ${{ inputs.environment }}"
+
+      - name: Show Date
+        run: date
+
+      - name: Show Branch
+        run: echo "Branch: $GITHUB_REF_NAME"
