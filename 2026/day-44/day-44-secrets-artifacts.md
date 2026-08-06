@@ -67,7 +67,6 @@ Examples:
 
 ## Screenshots
 
-![Upload Artifact Workflow](screenshots/04-upload-artifact-workflow.png)
 
 ![Downloaded Artifact](screenshots/05-upload-artifact-download.png)
 
@@ -88,12 +87,9 @@ The second job downloaded the artifact and displayed its contents.
 
 Artifacts are used to transfer files such as build outputs, reports, logs, and deployment packages between jobs in the same workflow.
 
-## Screenshots
-
-![Artifact Sharing Workflow](screenshots/06-artifact-sharing-workflow.png)
+## Screenshot
 
 ![Artifact Sharing Output](screenshots/07-artifact-sharing-output.png)
-
 ---
 
 # Task 5 – Run Real Tests in CI
