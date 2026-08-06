@@ -2,7 +2,7 @@
 
 ## Objective
 
-Learned how to securely manage sensitive information, share files between jobs, run real tests in GitHub Actions, and optimize workflows using dependency caching.
+Today I learned how to securely manage sensitive information in GitHub Actions using Secrets, share files between jobs using Artifacts, execute real tests in CI, and improve workflow performance with Dependency Caching.
 
 ---
 
@@ -12,19 +12,19 @@ Created a repository secret named:
 
 - `MY_SECRET_MESSAGE`
 
-Verified that the workflow could detect the secret without exposing its value.
+Verified that the workflow could detect the secret without exposing its actual value.
 
-Also confirmed that GitHub automatically masks secret values in workflow logs.
+GitHub automatically masks secret values in workflow logs to protect sensitive information.
 
 ## Why should you never print secrets in CI logs?
 
-Secrets may contain passwords, API keys, tokens, or credentials. Printing them in workflow logs can expose sensitive information and create security risks. GitHub automatically masks secrets to help prevent accidental disclosure.
+Secrets often contain passwords, API keys, or access tokens. Printing them in workflow logs can expose sensitive information and compromise security. GitHub automatically masks secret values to prevent accidental disclosure.
 
 ## Screenshots
 
-![GitHub Secrets](screenshots/01-github-secrets.png)
+![GitHub Secrets Page](screenshots/01-github-secrets-page.png)
 
-![Secrets Environment](screenshots/02-secrets-environment.png)
+![GitHub Secrets Workflow](screenshots/02-github-secrets-workflow.png)
 
 ---
 
@@ -38,7 +38,11 @@ Configured:
 - `DOCKER_USERNAME`
 - `DOCKER_TOKEN`
 
-This approach keeps sensitive information out of the workflow code.
+This allows workflows to securely access sensitive values without hardcoding them into the workflow file.
+
+## Screenshot
+
+![Secrets as Environment Variables](screenshots/03-secrets-environment-variables.png)
 
 ---
 
@@ -50,22 +54,22 @@ Created a report file during the workflow and uploaded it using:
 
 Successfully downloaded the artifact from the GitHub Actions page.
 
-## What are artifacts?
+## What are Artifacts?
 
 Artifacts are files generated during a workflow that can be stored and downloaded later.
 
-Examples include:
+Examples:
 
-- Build outputs
 - Test reports
+- Build outputs
 - Log files
 - Deployment packages
 
 ## Screenshots
 
-![Upload Artifact Log](screenshots/03-upload-artifact-log.png)
+![Upload Artifact Workflow](screenshots/04-upload-artifact-workflow.png)
 
-![Downloaded Artifact](screenshots/04-upload-artifact-download.png)
+![Downloaded Artifact](screenshots/05-upload-artifact-download.png)
 
 ---
 
@@ -76,19 +80,19 @@ Created two jobs:
 - **create-artifact**
 - **use-artifact**
 
-The first job uploaded a file.
+The first job generated and uploaded a file.
 
 The second job downloaded the artifact and displayed its contents.
 
-## When would you use artifacts in a real pipeline?
+## When would you use Artifacts in a real pipeline?
 
-Artifacts allow different jobs to share files such as build outputs, reports, logs, and deployment packages without recreating them.
+Artifacts are used to transfer files such as build outputs, reports, logs, and deployment packages between jobs in the same workflow.
 
 ## Screenshots
 
-![Artifact Workflow](screenshots/05-artifact-sharing-workflow.png)
+![Artifact Sharing Workflow](screenshots/06-artifact-sharing-workflow.png)
 
-![Artifact Output](screenshots/06-artifact-sharing-output.png)
+![Artifact Sharing Output](screenshots/07-artifact-sharing-output.png)
 
 ---
 
@@ -102,19 +106,17 @@ Verified three scenarios:
 - Failed execution
 - Successful execution after fixing the script
 
-This demonstrates how CI automatically validates code changes.
-
 ## Why run tests in CI?
 
-Running tests automatically helps detect issues early, improves code quality, and prevents broken code from progressing through the pipeline.
+Running tests automatically helps detect issues early, improves code quality, and prevents broken code from moving through the CI/CD pipeline.
 
 ## Screenshots
 
-![Passing Test](screenshots/07-shell-test-pass.png)
+![Passing Test](screenshots/08-shell-test-pass.png)
 
-![Failed Test](screenshots/08-shell-test-fail.png)
+![Failed Test](screenshots/09-shell-test-fail.png)
 
-![Fixed Test](screenshots/09-shell-test-fixed.png)
+![Fixed Test](screenshots/10-shell-test-fixed.png)
 
 ---
 
@@ -124,21 +126,19 @@ Implemented dependency caching using:
 
 - `actions/cache@v4`
 
-Cached Python packages to reduce installation time in future workflow runs.
+Cached Python dependencies to speed up future workflow runs.
 
 ## What is being cached?
 
-The workflow caches the local pip package cache (`~/.cache/pip`) to avoid downloading the same dependencies repeatedly.
+The workflow caches the local pip package cache (`~/.cache/pip`) so dependencies do not need to be downloaded repeatedly.
 
 ## Where is the cache stored?
 
 The cache is stored by GitHub Actions and is associated with the repository and cache key.
 
-## Screenshots
+## Screenshot
 
-![First Cache Run](screenshots/10-cache-first-run.png)
-
-![Second Cache Run](screenshots/11-cache-second-run.png)
+![Dependency Cache](screenshots/11-cache-second-run.png)
 
 ---
 
@@ -146,9 +146,9 @@ The cache is stored by GitHub Actions and is associated with the repository and 
 
 - GitHub Secrets securely store sensitive information.
 - Environment variables simplify configuration management.
-- Artifacts allow files to be shared between workflow jobs.
+- Artifacts enable file sharing between workflow jobs.
 - CI automatically validates code by running tests.
-- Dependency caching improves workflow performance by reducing repeated downloads.
+- Dependency caching reduces workflow execution time by avoiding repeated downloads.
 
 ---
 
@@ -160,7 +160,7 @@ Successfully completed Day 44 by implementing:
 - Environment Variables
 - Artifact Upload
 - Artifact Download
-- Real CI Testing
+- Running Real Tests in CI
 - Dependency Caching
 
-These concepts are essential for building secure, efficient, and production-ready CI/CD pipelines using GitHub Actions.
+These concepts are fundamental for building secure, efficient, and production-ready CI/CD pipelines using GitHub Actions.
