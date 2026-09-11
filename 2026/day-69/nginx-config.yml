@@ -1,0 +1,26 @@
+---
+- name: Configure Nginx with handler
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Copy Nginx configuration
+      copy:
+        src: files/nginx.conf
+        dest: /etc/nginx/sites-available/default
+        owner: root
+        group: root
+        mode: '0644'
+      notify: Restart Nginx
+
+    - name: Ensure Nginx is running
+      service:
+        name: nginx
+        state: started
+        enabled: true
+
+  handlers:
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted

@@ -1,0 +1,53 @@
+---
+- name: Configure web servers
+  hosts: web
+  become: true
+
+  tasks:
+    - name: Ensure Nginx is installed
+      apt:
+        name: nginx
+        state: present
+        update_cache: true
+
+    - name: Ensure Nginx is running
+      service:
+        name: nginx
+        state: started
+        enabled: true
+
+
+- name: Configure application servers
+  hosts: app
+  become: true
+
+  tasks:
+    - name: Create application directory
+      file:
+        path: /opt/myapp
+        state: directory
+        mode: '0755'
+
+    - name: Create application file
+      copy:
+        content: "Application server configured by Ansible\n"
+        dest: /opt/myapp/app.txt
+        mode: '0644'
+
+
+- name: Configure database servers
+  hosts: db
+  become: true
+
+  tasks:
+    - name: Create database configuration directory
+      file:
+        path: /opt/db-config
+        state: directory
+        mode: '0755'
+
+    - name: Create database configuration file
+      copy:
+        content: "Database server configured by Ansible\n"
+        dest: /opt/db-config/db.txt
+        mode: '0644'

@@ -1,0 +1,61 @@
+---
+- name: Practice essential Ansible modules
+  hosts: all
+  become: true
+
+  tasks:
+
+    - name: Install essential packages
+      apt:
+        name:
+          - git
+          - curl
+          - wget
+          - tree
+        state: present
+        update_cache: true
+
+    - name: Ensure Nginx is running on web server
+      service:
+        name: nginx
+        state: started
+        enabled: true
+      when: "'web' in group_names"
+
+    - name: Create sample application configuration
+      copy:
+        src: files/app.conf
+        dest: /etc/app.conf
+        owner: root
+        group: root
+        mode: '0644'
+
+    - name: Create application directory
+      file:
+        path: /opt/myapp
+        state: directory
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Check disk space
+      command: df -h
+      register: disk_output
+
+    - name: Print disk space
+      debug:
+        var: disk_output.stdout_lines
+
+    - name: Count running processes
+      shell: ps aux | wc -l
+      register: process_count
+
+    - name: Show process count
+      debug:
+        msg: "Total processes: {{ process_count.stdout }}"
+
+    - name: Set timezone environment variable
+      lineinfile:
+        path: /etc/environment
+        line: 'TZ=Asia/Kolkata'
+        create: true
