@@ -1,0 +1,56 @@
+---
+- name: Conditional demo
+  hosts: all
+  become: true
+
+  vars:
+    app_env: development
+
+  tasks:
+
+    - name: Install Nginx on web servers
+      apt:
+        name: nginx
+        state: present
+        update_cache: true
+      when: "'web' in group_names"
+
+    - name: Install MySQL on database servers
+      apt:
+        name: mysql-server
+        state: present
+        update_cache: true
+      when: "'db' in group_names"
+
+    - name: Warn when RAM is less than 1 GB
+      debug:
+        msg: "WARNING: This server has less than 1 GB RAM"
+      when: ansible_memtotal_mb < 1024
+
+    - name: Ubuntu specific task
+      debug:
+        msg: "This is an Ubuntu server"
+      when: ansible_distribution == "Ubuntu"
+
+    - name: Amazon Linux specific task
+      debug:
+        msg: "This is an Amazon Linux server"
+      when: ansible_distribution == "Amazon"
+
+    - name: Production environment
+      debug:
+        msg: "Production environment detected"
+      when: app_env == "production"
+
+    - name: Web server with sufficient RAM
+      debug:
+        msg: "Web server has at least 512 MB RAM"
+      when:
+        - "'web' in group_names"
+        - ansible_memtotal_mb >= 512
+
+    - name: Web or application server
+      debug:
+        msg: "This is a web or application server"
+      when: "'web' in group_names or 'app' in group_names"
+

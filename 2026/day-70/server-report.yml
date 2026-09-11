@@ -1,0 +1,62 @@
+---
+- name: Generate Server Report
+  hosts: all
+  become: true
+
+  vars:
+    report_path: "/tmp/server-report-{{ inventory_hostname }}.txt"
+
+  tasks:
+
+    - name: Check disk usage
+      command: df -h /
+      register: disk_result
+      changed_when: false
+
+    - name: Check memory usage
+      command: free -m
+      register: memory_result
+      changed_when: false
+
+    - name: Check running services
+      shell: systemctl list-units --type=service --state=running --no-pager
+      register: services_result
+      changed_when: false
+
+    - name: Display server report
+      debug:
+        msg:
+          - "===== SERVER REPORT ====="
+          - "Hostname: {{ ansible_hostname }}"
+          - "OS: {{ ansible_distribution }} {{ ansible_distribution_version }}"
+          - "IP Address: {{ ansible_default_ipv4.address }}"
+          - "RAM: {{ ansible_memtotal_mb }} MB"
+          - "Disk:"
+          - "{{ disk_result.stdout }}"
+          - "Memory:"
+          - "{{ memory_result.stdout }}"
+
+    - name: Warn about low memory
+      debug:
+        msg: "WARNING: Server has less than 1 GB RAM"
+      when: ansible_memtotal_mb < 1024
+
+    - name: Save report to file
+      copy:
+        content: |
+          ===== SERVER REPORT =====
+          Hostname: {{ ansible_hostname }}
+          OS: {{ ansible_distribution }} {{ ansible_distribution_version }}
+          IP Address: {{ ansible_default_ipv4.address }}
+          RAM: {{ ansible_memtotal_mb }} MB
+
+          ===== DISK =====
+          {{ disk_result.stdout }}
+
+          ===== MEMORY =====
+          {{ memory_result.stdout }}
+
+          ===== RUNNING SERVICES =====
+          {{ services_result.stdout }}
+        dest: "{{ report_path }}"
+        mode: '0644'

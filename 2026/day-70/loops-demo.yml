@@ -1,0 +1,54 @@
+---
+- name: Loops demo
+  hosts: all
+  become: true
+
+  vars:
+    users:
+      - name: deploy
+        groups: sudo
+      - name: monitor
+        groups: sudo
+      - name: appuser
+        groups: users
+
+    directories:
+      - /opt/app/logs
+      - /opt/app/config
+      - /opt/app/data
+      - /opt/app/tmp
+
+    packages:
+      - git
+      - curl
+      - unzip
+      - jq
+
+  tasks:
+
+    - name: Create users
+      user:
+        name: "{{ item.name }}"
+        groups: "{{ item.groups }}"
+        append: true
+        state: present
+      loop: "{{ users }}"
+
+    - name: Create application directories
+      file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0755'
+      loop: "{{ directories }}"
+
+    - name: Install required packages
+      apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: true
+      loop: "{{ packages }}"
+
+    - name: Show created users
+      debug:
+        msg: "User {{ item.name }} belongs to {{ item.groups }}"
+      loop: "{{ users }}"
