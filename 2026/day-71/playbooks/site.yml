@@ -1,0 +1,35 @@
+---
+- name: Configure all servers
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Install common packages
+      apt:
+        name: "{{ common_packages }}"
+        state: present
+        update_cache: true
+
+    - name: Show environment
+      debug:
+        msg: "Environment: {{ app_env }}"
+
+    - name: Show NTP server
+      debug:
+        msg: "NTP Server: {{ ntp_server }}"
+
+    - name: Show web configuration
+      debug:
+        msg: "HTTP Port: {{ http_port }}, Max Connections: {{ max_connections }}"
+      when: "'web' in group_names"
+
+    - name: Show database configuration
+      debug:
+        msg: "Database Port: {{ db_port }}"
+      when: "'db' in group_names"
+
+    - name: Show host-specific message
+      debug:
+        msg: "{{ custom_message }}"
+      when: custom_message is defined
+

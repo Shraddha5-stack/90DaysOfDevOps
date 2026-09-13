@@ -1,0 +1,18 @@
+---
+- name: Test Ansible Vault
+  hosts: app
+  become: true
+
+  tasks:
+    - name: Display database username
+      debug:
+        msg: "Database user is {{ db_username }}"
+
+    - name: Display database host
+      debug:
+        msg: "Database host is {{ db_host }}"
+
+    - name: Use database password securely
+      debug:
+        msg: "Database password has been loaded securely"
+      no_log: true
