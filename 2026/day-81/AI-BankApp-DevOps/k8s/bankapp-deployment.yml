@@ -12,6 +12,8 @@ spec:
     metadata:
       labels:
         app: bankapp
+      annotations:
+        gitops-test: "day-84"
     spec:
       initContainers:
         - name: wait-for-mysql
